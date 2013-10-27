@@ -56,8 +56,6 @@ var TEST  = {
 		});
 	},
 	on_load_notification_dialog_callback3: function(data) {
-		debugger;
-
 		if(data && data.isRemote) {
 			TEST.instantiate_notification_dialog3();
 		} else {

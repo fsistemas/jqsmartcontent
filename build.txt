@@ -1,0 +1,4 @@
+#Minify
+
+java -jar yuicompressor-2.4.8.jar /home/fsistemas/jqsmartcontent/jqsmartcontent.js -o /home/fsistemas/jqsmartcontent/jqsmartcontent.min.js
+

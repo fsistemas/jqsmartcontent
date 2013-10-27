@@ -22,23 +22,24 @@
 		}
 
 		function destroy($el) {
-			var child_container_id = $el.data("child_container_id") ? $el.data("child_container_id") : options["child_container_id"];
-			$el.html("");
+			var child_container_id = $el.data("child_container_id") ? $el.data("child_container_id") : settings.child_container_id;
+			$("#" + child_container_id).remove();
+			//$el.html("");
 		}
 
 		function hide($el) {
-			var child_container_id = $el.data("child_container_id") ? $el.data("child_container_id") : options["child_container_id"];
+			var child_container_id = $el.data("child_container_id") ? $el.data("child_container_id") : settings.child_container_id;
 			$("#" + child_container_id).hide();
 		}
 
 		function show($el) {
-			var child_container_id = $el.data("child_container_id") ? $el.data("child_container_id") : options["child_container_id"];
+			var child_container_id = $el.data("child_container_id") ? $el.data("child_container_id") : settings.child_container_id;
 
 			$("#" + child_container_id).show();			
 		}
 
 		function process_options($el) {
-			var action = options["action"] ? options["action"] : options;
+			var action = settings.action ? settings.action : options;
 
 			if(action == "destroy") {
 				destroy($el);
@@ -50,8 +51,8 @@
 		}
 
 		function get_content($el) {
-			var url = $el.data("url") ? $el.data("url") : options["url"];
-			var child_container_id = $el.data("child_container_id") ? $el.data("child_container_id") : options["child_container_id"];
+			var url = $el.data("url") ? $el.data("url") : settings.url;
+			var child_container_id = $el.data("child_container_id") ? $el.data("child_container_id") : settings.child_container_id;
 
 			if($("#" + child_container_id).length > 0) {
 				process_options($el);
