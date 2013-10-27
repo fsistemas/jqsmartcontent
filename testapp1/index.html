@@ -1,0 +1,24 @@
+<!doctype html>
+<meta charset="utf-8" />
+<title>JqSmartContent JQuery Plugin</title>
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+
+<body>
+	<a href="#!" id="btn_show_dialog" name="btn_show_dialog">Notification methods</a>
+	<a href="#!" id="btn_show_dialog2" name="btn_show_dialog2">Day of week</a>
+	<a href="#!" id="btn_show_dialog3" name="btn_show_dialog3">Dialog 3</a>
+
+	<div id="div_my_ajax_dialog_container" data-url="remote_content.html" data-child_container_id = "ajax_dialog"></div>
+	<div id="div_my_ajax_dialog_container2" data-url="remote_content2.html" data-child_container_id = "ajax_dialog2"></div>
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+	<script src="js/vendor/jqsmartcontent.js"></script>
+	<script src="js/test.js"></script>
+	<script>
+		$(document).ready(function() {
+			TEST.ready();
+		});
+	</script>
+</body>
