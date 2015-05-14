@@ -6,7 +6,7 @@
 
         var settings = $.extend( {}, defaults, options );
 
-		function call_callback(isRemote, xhr) {
+		function call_callback(isRemote, xhr, $el) {
 			var data = callback_params;
 
 			if (typeof callback == 'function') {
@@ -18,6 +18,15 @@
 				data._xhr = xhr;
 
 				callback(data);
+			} else if($el && $el.data("callback") && typeof window[$el.data("callback")] == 'function' ) {
+				if(!(callback_params instanceof Object)) {
+					data = {};
+				}
+
+				data.isRemote = isRemote;
+				data._xhr = xhr;
+
+				window[$el.data("callback")](data);
 			}
 		}
 
@@ -57,7 +66,7 @@
 			if($("#" + child_container_id).length > 0) {
 				process_options($el);
 
-				call_callback(false,null);
+				call_callback(false,null,$el);
 			} else {
 				var $parentContainer = null;
 				var parentContainerId = "parent_" + child_container_id;
@@ -80,7 +89,7 @@
 				$parentContainer.load(url, function(response, status, xhr) {
 					process_options($parentContainer);
 
-					call_callback(true,xhr);
+					call_callback(true,xhr,$el);
 				});
 			}
 		}
