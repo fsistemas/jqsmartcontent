@@ -86,11 +86,21 @@
 					$parentContainer = $el;
 				}
 
-				$parentContainer.load(url, function(response, status, xhr) {
+				//Status OK: notmodified, success
+				//Status error: abort, error, parsererror, timeout
+				//http://api.jquery.com/jQuery.ajax/
+				if($parentContainer.data("jqsmartcontent-status") == "success" && $parentContainer.data("jqsmartcontent-status") == "notmodified") {
 					process_options($parentContainer);
-
 					call_callback(true,xhr,$el);
-				});
+				} else if($parentContainer.data("jqsmartcontent-status") == undefined || $parentContainer.data("jqsmartcontent-status") != "new") {
+					//Prevent multiple request to backend servers
+					$parentContainer.data("jqsmartcontent-status", "new");
+
+					$parentContainer.load(url, function(response, status, xhr) {
+						process_options($parentContainer);
+						call_callback(true,xhr,$el);
+					});
+				}
 			}
 		}
 
