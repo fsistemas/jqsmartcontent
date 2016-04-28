@@ -97,6 +97,8 @@
 					$parentContainer.data("jqsmartcontent-status", "new");
 
 					$parentContainer.load(url, function(response, status, xhr) {
+						$parentContainer.data("jqsmartcontent-status", status);
+
 						process_options($parentContainer);
 						call_callback(true,xhr,$el);
 					});
